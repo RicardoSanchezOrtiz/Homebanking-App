@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
+* {
+    font-family: "Titillium Web",sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
+.bankLogo{
+  font-size: 25px;
+}
+.comp-logo{
+  width: 100px;
+}
+h2, h3{
+    color: #bfbfbf;
+}
+.upperHeader{
+  position: sticky;
+  z-index: 1;
+}
+body{
+  background-image: url(/images/278903.jpg);
+  font-family: "Raleway",sans-serif;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#accountProducts{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1em;
+  padding: 25px;
+  width: 600px;
+}
+.card{
+  box-shadow: 4px 5px 17px 1px rgba(0,0,0,0.7);
+  -webkit-box-shadow: 4px 5px 17px 1px rgba(0,0,0,0.7);
+  -moz-box-shadow: 4px 5px 17px 1px rgba(0,0,0,0.7);
+  width: 100%;
+  padding: 1em;
+  font-size: 23px;
+}
+.trans-title{
+  color: #212149;
+  font-weight: bolder;
+  margin-bottom: 1em;
+}
+#accountProducts .tabs[type ="radio"]{
+  display: none;
+}
+#accountProducts label{
+  padding: 0.5em;
+  background-color:blue;
+  color: aliceblue;
+  border-radius: 0.5em;
+  height: 2.5em;
+  width: 120px;
+  text-align: center;
+  margin-left: 1em;
+}
+#accountProducts .tab{
+  order: 2;
+  display: none;
+  width: 100%;
+}
+#accountProducts .tabs[type ="radio"]:checked + label + .tab{
+  display: block;
+}
+#accountProducts .tabs[type ="radio"]:checked +label{
+  background-color: aliceblue;
+  color: black;
+}
+.tab{
+  margin-top: 1.5em;
+}
+#check-trans{
+  padding: 0.5em;
+}
+.table-head{
+  font-size: 2em;
+}
+.transactions{
+  margin: auto auto;
+  width: 60%;
+  border-radius: 0.5em;
+}
+.title{
+  text-align: center;
+  font-weight: bolder;
+}
+.table-title{
+  text-align: center;
+  background-color: black;
+  color: aliceblue;
+  margin: auto auto;
+  width: 60%;
+  overflow: visible;
+}
+td{
+  margin: 0.2rem;
+  font-size: 1.5rem;
+}
+main{
+  min-height: 70vh;
+  margin-bottom: 6rem;
+}
+#contents{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.back-home{
+  color:#fff;
+  text-decoration: none;
+  background: rgb(33,33,73);
+  background: radial-gradient(circle, rgba(33,33,73,1) 31%, rgba(16,25,28,1) 83%);
+  padding: 1rem;
+  margin: 1rem;
+  font-size: 18px;
+  text-decoration: none;
+}
+.back-home:hover{
+  background: #CDD8E4;
+  color: #212149;
+}
+.buttons{
+  color:#fff;
+  text-decoration: none;
+  background: rgb(33,33,73);
+  background: radial-gradient(circle, rgba(33,33,73,1) 31%, rgba(16,25,28,1) 83%);
+  padding: 1rem;
+  margin: 1rem;
+  font-size: 18px;
+}
+.buttons:hover{
+  background: #CDD8E4;
+  color: #212149;
+}
+.button-text{
+  text-decoration: none;
+  color: #fff;
+  height: 100%;
+  width: 100%;
+  padding: 1em;
+}
+.button-text:hover{
+  text-decoration: none;
+  background: #CDD8E4;
+  color: #212149;
+}
+
+.item{
+  height: 600px;
+  text-align: center;
+}
+.item-textbox{
+  background-color: #CDD8E4;
+  width: 320px;
+}
+.item-title{
+  font-size: 40px;
+  color: rgba(16,25,28,1);
+  font-weight: bolder;
+}
+.carousel-item img{
+  width: 70%;
+}
+#carouselExampleRide{
+  width: 95%;
+  margin: 1em auto;
+}
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
+.transparent-card{
+  max-width: 700px;
+  min-width: 300px;
+  min-height: 500px;
+
+  min-height: 300px;
+  padding: 35px;
+
+  border: 1px solid rgba(255, 255, 255, .25);
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+
+  backdrop-filter: blur(14px);
+}
+
+@media (min-width: 768px){
+  html, body {
+      min-height: 0;
+  }
+  main{
+      max-height: fit-content;
+      margin: 2rem 2rem;
+  }
+  
+  
+}
+
+@media (max-width: 768px){
+  .table-head{
+    font-size: 1.2em;
+  }
+  td{
+    margin: 0.2rem;
+    font-size: 15px;
+  }
+  #accountProducts{
+    width: 100%;
+  }
+  .card{
+    width: 90%;
+  }
+  #accountProducts{
+    margin: 0;
+    width: 100%;
+    padding: 12px;
+  }
+}
+@media (max-width: 1024px){
+  .card{
+    width: 100%;
+    margin: 0.2em;
+  }
+  .item-textbox{
+    background-color: #CDD8E4;
+    width: 100%;
+    height: 350px;
+  }
+  .carousel-item img{
+    width: 100%;
+  }
+}
+@media (max-width: 495px){
+  .table-title{
+    width: 70%;
+  }
+  .item-title{
+    font-size: 25px;
+  }
+}

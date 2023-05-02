@@ -1,0 +1,55 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.title{
+    text-align: center;
+    font-size: 3rem;
+}
+.transactionForm{
+    background-color: aliceblue;
+    min-height: 70vh;
+    padding: 1.5em;
+    border-radius: 2em;
+    font-size: 20px;
+    width: 700px;
+    margin: 2em auto;
+}
+.form-header{
+    margin-bottom: 1em;
+}
+.accOptions{
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+}
+.accOptions label{
+    margin: 0.5em 0;
+}
+.fields{
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+}
+.fields> *{
+    margin-bottom: 0.5em;
+}
+.fields> input, select{
+    max-width: 25em;
+    padding: 0.2em 0.5em;
+    border-radius: 1em;
+    font-size: 1.2em;
+}
+.send{
+    width: 10em;
+    padding: 0.5em;
+    align-self: center;
+}
+@media (max-width: 768px){
+    .transactionForm{
+        width: 95%;
+    }
+}

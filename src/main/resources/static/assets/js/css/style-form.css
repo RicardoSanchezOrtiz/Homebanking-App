@@ -1,0 +1,81 @@
+html, body {
+    min-height: 100%;
+}
+body, div, input, p { 
+padding: 0;
+margin: 0;
+outline: none;
+font-family: Roboto, Arial, sans-serif;
+font-size: 20px;
+color: #666;
+line-height: 28px;
+}
+h1, h4 {
+font-weight: 400;
+}
+main{
+    display: flex;
+    justify-content: center;
+}
+.upperHeader{
+    position: sticky;
+    z-index: 1;
+  }
+h4 {
+margin: 25px 0 5px;
+color: #095484;
+}
+.testbox {
+display: flex;
+justify-content: center;
+align-items: center;
+height: inherit;
+padding: 3px;
+}
+form {
+padding: 20px;
+background: #fff;
+box-shadow: 0 2px 5px #ccc; 
+margin: auto auto;
+}
+input {
+width: auto;
+margin-right: 15px;
+vertical-align: middle;
+}
+.question-answer label {
+display: block;
+margin: 1em 0;
+}
+.description{
+    width: 350px;
+}
+.btn-block {
+margin-top: 20px;
+text-align: center;
+}
+button {
+width: 100px;
+padding: 5px;
+border: none;
+-webkit-border-radius: 5px; 
+-moz-border-radius: 5px; 
+border-radius: 5px; 
+background-color: #095484;
+font-size: 16px;
+color: #fff;
+cursor: pointer;
+}
+button:hover {
+background-color: #0666a3;
+}
+@media (min-width: 1025px){
+    html, body {
+        min-height: 0;
+    }
+    main{
+        max-height: fit-content;
+        width: 80%;
+        margin: auto auto;
+    }
+}

@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-image: url(./images/background.jfif);
+    background-size: cover;
+}
+
+h1{
+    background-color: aliceblue;
+    width: max-content;
+    border-radius: 0.5rem;
+    box-shadow: 0.3rem 0.5rem 0.5rem;
+}
+
+.contenedorMain{
+    background-color: azure;
+    box-shadow: 0.3rem 0.5rem 0.5rem;
+    border-radius: 0.2rem;
+}
+
+input{
+    border-radius: 0.5rem;
+}
+
+tr{
+    border-bottom: 3px black solid;
+}
+

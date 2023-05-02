@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
+	<link rel="icon" type="image/png" href="../images/logo.png"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <link rel="stylesheet" href="../assets/js/css/style-cards.css">
+  <link rel="stylesheet" href="../assets/js/css/navbar-style.css">
+  <link rel="stylesheet" href="../assets/js/css/footer.css">
+  <title>Your Cards</title>
+</head>
+
+<body>
+  <div id="app">
+    <header class="upperHeader">
+      <nav class="d-flex justify-content-between">
+        <div class="d-flex">
+          <img src="../images/logo.png" alt="logo" class="comp-logo">
+          <label class="logo">MINDBANK</label>
+        </div>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+          <i class="fas fa-bars"></i>
+        </label>
+        <ul id="navigation">
+          <li><a  href="./accounts.html">Home</a></li>
+          <li><a class="active" href="#">Cards</a></li>
+          <li><a href="./transaction.html">Transfer</a></li>
+          <li><a @Click="logOut" id="logOut">Log out</a></li>
+        </ul>
+      </nav>
+    </header>
+    <mai>
+      <div v-if="client">
+        <h2 v-if="client" class="fs-1 title fw-bolder my-5">YOUR CARDS</h2>
+        <a href="./create-cards.html" id="create-background" class="createCards " >Get a new
+            card</a>
+        <a class="createCards btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+          Delete card
+        </a>
+        <div class="d-flex flex-wrap justify-content-evenly">
+          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Which Card do you wish to DELETE</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <h3>CREDIT</h3>
+                  <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" v-model="number">
+                    <option selected></option>
+                    <option v-for="card of cardsCredit" :value="card.number">{{card.color}} {{card.type}}</option>
+                  </select>
+                  <h3>DEBIT</h3>
+                  <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" v-model="number">
+                    <option selected></option>
+                    <option v-for="card of cardsDebit" :value="card.number">{{card.color}} {{card.type}}</option>
+                  </select>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" @Click="hideCard"
+                    data-bs-dismiss="modal">Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="my-5 mx-5">
+            <h3 class="card-title" type="button">CREDIT CARDS</h3>
+            <div v-for="card of cardsCredit">
+              <section lang="en-US" class="my-5 mx-lg-5">
+                <div class="card2">
+                  <div v-if="card.thruDate <= reversedDate" class="expired">
+                    <p>EXPIRED</p>
+                  </div>
+                  <div class="face2 front">
+                    <h3 class="debit">{{card.type}} {{card.color}} Card</h3>
+                    <h3 class="bank">MINDBANK</h3>
+                    <img
+                      src="https://raw.githubusercontent.com/TheBugDr0id/Debit-Card-Design-Using-HTML-and-CSS/main/chip.png"
+                      class="chip" />
+                    <div class="number">{{card.number}}</div>
+                    <h4 class="valid">
+                      <span>{{card.fromDate}}</span><span>{{card.thruDate}}</span>
+                    </h4>
+                    <h5 class="holder">{{card.cardholder}}</h5>
+                  </div>
+                  <div class="face2 back">
+                    <div class="blackbar"></div>
+                    <div class="ccvtext">
+                      <h5>Authorized signature-not valid unless signed</h5>
+                      <div class="whitebar"></div>
+                      <div class="ccv">{{card.ccv}}</div>
+                    </div>
+                    <div class="text">
+                      <p lang="en-US">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        Voluptatum possimus consequatur rerum doloremque sit tempora quos
+                        illum aperiam expedita. Dignissimos totam nihil reprehenderit,
+                        officiis officia dicta quaerat nam ea inventore!
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <div v-if="cardsCredit.length == 0" class="noCardsMsg">
+              <h3>It seems at the moment you don't have any active CREDIT cards</h3>
+              <h3>Order one today!</h3>
+            </div>
+          </div>
+          <div class="my-5 mx-5 ">
+            <h3 class="card-title" type="button">DEBIT CARDS</h3>
+            <div lang="en-US" v-for="card of cardsDebit" class="my-5 mx-lg-5">
+              <div class="card2">
+                <div v-if="card.thruDate <= reversedDate" class="expired">
+                  <p>EXPIRED</p>
+                </div>
+                <div class="face front">
+                  <h3 class="debit">{{card.type}} {{card.color}} Card</h3>
+                  <h3 class="bank">MINDBANK</h3>
+                  <img
+                    src="https://raw.githubusercontent.com/TheBugDr0id/Debit-Card-Design-Using-HTML-and-CSS/main/chip.png"
+                    class="chip" />
+                  <div class="number">{{card.number}}</div>
+                  <h4 class="valid">
+                    <span>{{card.fromDate}}</span><span>{{card.thruDate}}</span>
+                  </h4>
+                  <h5 class="holder">{{card.cardholder}}</h5>
+                </div>
+                <div class="face back">
+                  <div class="blackbar"></div>
+                  <div class="ccvtext">
+                    <h5>Authorized signature-not valid unless signed</h5>
+                    <div class="whitebar"></div>
+                    <div class="ccv">{{card.ccv}}</div>
+                  </div>
+                  <div class="text">
+                    <p lang="en-US">
+                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                      Voluptatum possimus consequatur rerum doloremque sit tempora quos
+                      illum aperiam expedita. Dignissimos totam nihil reprehenderit,
+                      officiis officia dicta quaerat nam ea inventore!
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div v-if="cardsDebit.length == 0" class="noCardsMsg">
+              <h3>It seems at the moment you don't have any active DEBIT cards</h3>
+              <h3>Order one today!</h3>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="footer__addr">
+        <h1 class="footer__logo">MINDBANK</h1>
+        <h2>Contact</h2>
+        <address>
+          5534 Somewhere In. The World 22193-10212<br>
+          <a class="footer__btn" href="mailto:example@gmail.com">Email Us</a>
+        </address>
+      </div>
+      <ul class="footer__nav">
+        <li class="nav__item">
+          <h2 class="nav__title">MEDIA</h2>
+          <ul class="nav__ul">
+            <li>
+              <i class="fa fa-facebook-square " aria-hidden="true"><a href="https://www.facebook.com/"> Facebook</a></i>
+            </li>
+            <li>
+              <i class="fa fa-linkedin-square " aria-hidden="true"><a href="https://www.linkedin.com/"> Linkedin</a></i>
+            </li>
+            <li>
+              <i class="fa fa-twitter-square " aria-hidden="true"><a href="https://twitter.com/"> Twitter</a></i>
+            </li>
+          </ul>
+        </li>
+        <li class="nav__item nav__item--extra ">
+          <h2 class="nav__title">WHERE TO FIND US</h2>
+          <div>
+            <div>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.7414358155174!2d-76.54525967584121!3d3.4130789895694886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e30a6af72c863f7%3A0x52b11f15184d1a69!2sBancolombia%20Palmetto!5e0!3m2!1ses-419!2sco!4v1679105499282!5m2!1ses-419!2sco"
+                width="300" height="150" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </li>
+      </ul>
+    </footer>
+  </div>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="https://kit.fontawesome.com/f6658d8fea.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="../assets/js/cards.js"></script>
+</body>
+
+</html>
